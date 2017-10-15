@@ -6,6 +6,10 @@ clopper = commands.Bot(command_prefix='c!', description='A multipurpose bot writ
 
 cogs = ['modules.audio', 'modules.mod', 'modules.profiles', 'modules.fun', 'modules.general']
 
+@bot.event
+async def on_ready():
+  await clopper.change_presence(game=discord.Game(name=str(len(clopper.servers)) + ' servers'))
+
 for cog in cogs: clopper.load_extension(cog)
 
 clopper.run('token')
