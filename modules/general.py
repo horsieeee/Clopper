@@ -8,6 +8,7 @@ from utils.dataIO import dataIO, fileIO
 
 class General:
     """General cogs for the bot."""
+    
     def __init__(self, bot):
         self.bot = bot
         self.reminders = fileIO("data/general/reminders.json", "load")
