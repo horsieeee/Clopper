@@ -4,7 +4,7 @@ Clopper is a multipurpose discord bot written in Python. It utilizes the discord
 ## How to Install
 If you want to self host (which is not recommended) you'll first need these libraries:
 - urbandictionary
-- discord.py[voice]
+- discord.py[voice] (On Linux, you'll need the `libffi-dev` package.)
 - bs4
 - requests
 - google
