@@ -1,5 +1,4 @@
 # `Clopper`
-[Add the bot here](https://discordapp.com/oauth2/authorize?client_id=365966851441819649&scope=bot&permissions=8)
 Clopper is a multipurpose discord bot written in Python. It utilizes the discord.py library, allowing it to make use of a command registering system. Clopper has a built-in level and profile system, audio, a moderation extension, and a fun extension, including 8ball and urban dictionary.
 ## How to Install
 If you want to self host (which is not recommended) you'll first need these libraries:
