@@ -168,7 +168,7 @@ class Audio:
         else:
             player.volume = 0.6
             entry = VoiceEntry(ctx.message, player)
-            await self.bot.say(':white_check_mark: Enqueued ' + str(entry))
+            await self.bot.say(':white_check_mark: I have enqueued this entry: ' + str(entry))
             await state.songs.put(entry)
 
     @commands.command(pass_context=True, no_pm=True)
@@ -224,21 +224,21 @@ class Audio:
 
         state = self.get_voice_state(ctx.message.server)
         if not state.is_playing():
-            await self.bot.say('Not playing any music right now...')
+            await self.bot.say(':x: Not playing any music right now.')
             return
 
         voter = ctx.message.author
         if voter == state.current.requester:
-            await self.bot.say(':arrow_right: Requester requested skipping song...')
+            await self.bot.say(':arrow_right: Requester says BYE!')
             state.skip()
         elif voter.id not in state.skip_votes:
             state.skip_votes.add(voter.id)
             total_votes = len(state.skip_votes)
             if total_votes >= 3:
-                await self.bot.say(':arrow_right: Skip vote passed, skipping song...')
+                await self.bot.say(':arrow_right: Skip vote passed, skipping song.')
                 state.skip()
             else:
-                await self.bot.say(':arrow_right: Skip vote added, currently at [{}/3]'.format(total_votes))
+                await self.bot.say(':arrow_right: Skip vote added, currently at {}/3'.format(total_votes))
         else:
             await self.bot.say(':x: You have already voted to skip this song.')
 
@@ -251,7 +251,7 @@ class Audio:
             await self.bot.say(':x: Not playing anything.')
         else:
             skip_count = len(state.skip_votes)
-            await self.bot.say(':white_check_mark: Now playing {} [skips: {}/3]'.format(state.current, skip_count))
+            await self.bot.say(':white_check_mark: I am now playing {} [skips: {}/3]'.format(state.current, skip_count))
 
 
 def setup(bot): bot.add_cog(Audio(bot))
